@@ -2,14 +2,15 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>Prediksi Kasus DBD</title>
+  <title>APRESDA</title>
+  <title>Aplikasi Prediksi Kasus Penyakit Demam Berdarah</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <style>
-    /* (Tampilan tetap sama persis) */
+        /* (Tampilan tetap sama persis) */
     body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background: linear-gradient(135deg, #6a1b9a, #1e88e5); color: #fff; }
     .container { background-color: rgba(255, 255, 255, 0.95); padding: 30px; border-radius: 15px; max-width: 1000px; margin: 50px auto; color: #000; }
     h1 { text-align: center; color: #1e88e5; }
@@ -30,8 +31,9 @@
 <body>
   <div class="container">
     <div style="text-align: center; margin-bottom: 20px;">
-      <img src="https://i.postimg.cc/HncHwVKh/LOGO-SIPRE-KADER-bulat.png" alt="Logo" style="max-height: 80px;" />
-      <h2 style="margin: 10px 0 0; color: #1e88e5;">SiPre-KaDer</h2>
+      <img src="https://i.postimg.cc/T3fvJPzY/APRESDA.png" alt="Logo" style="max-height: 80px;" />
+      <h2 style="margin: 10px 0 0; color: #1e88e5;">APRESDA</h2>
+      <h2 style="margin: 10px 0 0; color: #1e88e5;">(Aplikasi Prediksi Kasus Demam Berdarah)</h2>
     </div>
 
     <h1>Formulir Prediksi Kasus DBD 6 Bulan ke Depan</h1>
@@ -173,6 +175,9 @@
       const doc = new jsPDF();
       doc.setFontSize(14);
       doc.text("Laporan Prediksi DBD", 20, 20);
+      doc.text("Laporan Prediksi DBD", 20, 20);
+      const namaPuskesmas = document.getElementById("namaPuskesmas").innerText;
+      doc.text(namaPuskesmas, 20, 30);
       const rows = window.prediksiData.bulan.map((b, i) => [b, window.prediksiData.prediksi[i], window.prediksiData.ciBawah[i], window.prediksiData.ciAtas[i]]);
       doc.autoTable({ head: [["Bulan", "Prediksi", "CI Bawah", "CI Atas"]], body: rows, startY: 30 });
       const canvas = document.getElementById("chartPrediksi");
